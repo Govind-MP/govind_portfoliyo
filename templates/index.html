@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="/static/portstyle.css">
+    <title>Portfolio Website</title>
+</head>
+
+<body>
+    <header>
+        <a href="#" class="logo">Govind_mp</a>  
+        <div class="icon" onclick="toggleNav()">
+        <i class="fa fa-bars"></i>
+        </div>
+        <div id="navBar" onclick="toggleNav()">      
+        <nav>
+            <a href="#" class="active" onclick="showDetails('homeDetails')"> Home</a>
+            <a href="#" onclick="showDetails('servicesDetails')">Services</a>
+            <a href="#" onclick="showDetails('skillsDetails')">Skills</a>
+            <a href="#" onclick="showDetails('educationDetails')">Education</a>
+            <a href="#" onclick="showDetails('experienceDetails')">Experience</a>
+            <a href="#" onclick="showDetails('contactDetails')">Contact</a>
+        </nav>
+        </div>
+    </header>
+    <div id="homeDetails" class="details-section">
+        <h2>Nothing here, Sorry!</h2>
+        <p></p>
+    </div>
+    <div id="servicesDetails" class="details-section">
+        <b><p>Web Developed</p><br></b>
+        <b><p>Cloud Hosting</p><br></b><b>
+        <b><p>Backend Development</p><br></b>
+        <b><p>Music Production</p><br></b>
+        <b><p>DJ</p><br></b>
+
+    </div>
+    <div id="skillsDetails" class="details-section">
+        <b><p>Web Developed</p><br></b>
+        <b><p>AWS Cloud Hosting</p><br></b><b>
+        <b><p>Backend Development</p><br></b>
+        <b><p>Music Production</p><br></b>
+        <b><p>DJ</p><br></b>
+         
+    </div>
+    <div id="educationDetails" class="details-section">
+        <b><p>B.Tech Computer Science graduate from Adi Shankara Institute of Engineering and Technology</p></b>
+    </div>
+    <div id="experienceDetails" class="details-section">
+        <b><p>As a full-stack development intern, I gained hands-on experience working with front-end and back-end technologies. I built and maintained responsive websites using HTML, CSS, Bootstrap, and JavaScript. I also worked on developing APIs and handling databases using Python, SQL, and Java.
+
+            Additionally, I have completed internships at Techmindz by NDZ and Skillvertex, where I applied my technical skills to real-world projects. I am also currently expanding my knowledge in AWS cloud computing, as part of my training at NTTF Bangalore.</p></b>
+        
+    </div>
+    <div id="contactDetails" class="details-section">
+       <b><p>Email: govindmanoj25@gmail.com</p></b><br>
+        <b><p>Phone no:+91-9072328472</p></b><br>
+
+
+    </div>
+    <div class="first-page">
+
+    <section class="home">
+        <div class="home-img">
+            <img src="https://res.cloudinary.com/dhmdichss/image/upload/v1728849217/coderpng_t9z0xk.png" alt="">
+        </div>
+        <div class="home-content">
+            <h1>Hi, It's <span>Govind</span></h1>
+            <h3 class="typing-text" class="glitch">I'm a <span></span></h3>
+            <p>skilled in full-stack development, AWS cloud, and web hosting. With experience from internships and hands-on projects, I specialize in Python, Java, and web development. Currently, I'm enhancing my cloud expertise through AWS training.</p>
+            <div class="social-icons">
+                <a href="https://www.linkedin.com/in/govindmpillai/"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://github.com/Govind-MP"><i class="fa-brands fa-github"></i></a>
+                <a href="x.com"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="https://www.instagram.com/govind_mp/"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+            <a href="https://res.cloudinary.com/dhmdichss/image/upload/v1728851090/GovindMPillai-Resume_llun3l.pdf" class="btn" download="Govind_CV.pdf" onclick="triggerConfetti()">Download CV</a>
+
+
+        </div>
+    </section>
+    <!-- Canvas Confetti library -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+
+    <script>
+        // Function to show specific section
+        function showDetails(sectionId) {
+            const sections = document.querySelectorAll('.details-section');
+            sections.forEach(section => {
+                section.style.display = 'none';
+            });
+
+            function toggleNav() {
+            const nav = document.querySelector('header nav');
+            nav.classList.toggle('show');}
+
+            const selectedSection = document.getElementById(sectionId);
+            if (selectedSection) {
+                selectedSection.style.display = 'block';
+            }
+
+            selectedSection.addEventListener('click', function(event) {
+                event.stopPropagation();
+            });
+
+            particlesJS.load('particles-js', 'path/to/particles.json', function() {
+        console.log('callback - particles.js config loaded');
+    });
+
+        }
+
+        // Event listener to close all sections when clicking outside
+        document.addEventListener('click', function (event) {
+            const isNavLink = event.target.closest('nav a');
+            const isDetailSection = event.target.closest('.details-section');
+
+            if (!isNavLink && !isDetailSection) {
+                const sections = document.querySelectorAll('.details-section');
+                sections.forEach(section => {
+                    section.style.display = 'none';
+                });
+            }
+        });
+
+        // Confetti effect
+        function triggerConfetti() {
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 }
+            });
+        }
+
+        const trails = [];
+    const maxTrails = 20; // Maximum number of light trails
+
+    // Create initial trails
+    for (let i = 0; i < maxTrails; i++) {
+        const trail = document.createElement('div');
+        trail.className = 'trail';
+        document.body.appendChild(trail);
+        trails.push(trail);
+    }
+
+    document.addEventListener('mousemove', (e) => {
+        const trail = trails.shift(); // Get the oldest trail
+        trail.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`; // Move trail to cursor
+        trail.style.opacity = 1; // Show trail
+        trails.push(trail); // Add it back to the end of the array
+    });
+
+    setInterval(() => {
+        trails.forEach((trail, index) => {
+            if (index > 0) {
+                // Fade out older trails
+                trail.style.opacity = 1 - (index / trails.length);
+            }
+        });
+    }, 10); // Update the trails every 100ms
+    </script>
+    </div>
+
+<div class="second_page">
+    <video autoplay muted loop class="background-video">
+        <source src="/templates/videoplayback.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+
+<div class="container">
+    <h1 class="section-title">Experience</h1>
+    <div class="experience">
+        <div class="job">
+            <h3>AWS Cloud Computing | NTTF Bangalore</h3>
+            <p>• Completed coursework in AWS Cloud Computing, gaining practical knowledge in cloud services and deployment
+                strategies, including 6 projects successfully deployed.<br>
+                • AWS Certified Cloud Practitioner (CLF-C02) certification in progress, with completion excepted soon.</p>
+        </div>
+        <div class="job">
+            <h3>Intern - Devzery | Full-stack Developer</h3>
+            <p>• Worked as a full-stack developer intern, focusing on the design, development, and debugging of web applications.
+                Collaborated on 2 major projects, reducing debugging time by 20%.<br>
+                • Gained hands-on experience in front-end and back-end technologies. Improved front-end performance by 30%
+                  through optimized code and enhanced problem-solving skills.
+                </p>
+        </div>
+        <div class="job">
+            <h3>Intern - Techmindz by NDZ | Python Developer</h3>
+            <p>Handled various software development tasks and contributed to debugging during my internship at Techmindz.</p>
+        </div>
+        <div class="job">
+            <h3>Intern - Skillvertex | web Developer</h3>
+            <p>Worked on full-stack development projects, gaining experience with front-end development</p>
+        </div>
+       
+    </div>
+
+    <h1 class="section-title">Projects</h1>
+    <div class="projects">
+        <div class="project">
+            <h3>Media Player Controlling by Hand Gestures</h3>
+            <p>Developed a system using OpenCV and Python that controls a media player with hand gestures, adding a more interactive user experience.</p>
+        </div>
+        <div class="project">
+            <h3>Evide-Itto | Personalized Parking Application</h3>
+            <p>Developed a system using OpenCV and Python that controls a media player with hand gestures, adding a more interactive user experience.</p>
+        </div>
+        <div class="project">
+            <h3>Cloud Hosting | AWS</h3>
+            <p>Designed and developed 4 fully responsive websites and a react application ensuring optimal performance across devices and successfully hosted on 6 different hosting platforms.</p>
+        </div>
+    </div>
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="portstyle.css">
+    <title>Portfolio Website</title>
+</head>
+
+<body>
+    <!-- Your other sections remain the same -->
+
+    <h1 class="section-title">Contact Me</h1>
+    <div class="form-section">
+        <form id="contactForm" action="/send_message" method="POST">
+            <div class="form-group">
+                <label for="name">Your Name</label>
+                <input type="text" name="name" id="name" class="form-control" placeholder="Enter your name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Your Email</label>
+                <input type="email" name="email" id="email" class="form-control" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Your Message</label>
+                <textarea name="message" id="message" class="form-control" rows="5" placeholder="Enter your message" required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Send Message</button>
+        </form>
+        <div id="notification" class="notification">Message sent successfully!</div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // Show notification
+        function showNotification() {
+            const notification = document.getElementById('notification');
+            notification.classList.add('show');
+            
+            // Automatically hide after 3 seconds
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+
+        // Check if there's a flash message and show notification
+        window.onload = function() {
+            {% with messages = get_flashed_messages(with_categories=true) %}
+              {% if messages %}
+                showNotification();
+              {% endif %}
+            {% endwith %}
+        }
+    </script>
+
+    <!-- Your remaining sections and scripts remain the same -->
+
+</body>
+</html>
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+</div>
+</body>
+
+    
+</html>
